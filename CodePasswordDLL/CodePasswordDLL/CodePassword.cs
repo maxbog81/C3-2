@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WpfMailSender
+namespace CodePasswordDLL
 {
-    /// <summary>
-    /// На вход подаем зашифрованный пароль, на выходе получаем пароль для email
-    /// </summary>
-    public static class PasswordClass
+    public class CodePassword
     {
+        /// <summary>
+        /// На вход подаем зашифрованный пароль, на выходе получаем пароль для email
+        /// </summary>
         public static string getPassword(string p_sPassw)
         {
             string password = "";
@@ -40,5 +40,4 @@ namespace WpfMailSender
             return sCode;
         }
     }
-
 }

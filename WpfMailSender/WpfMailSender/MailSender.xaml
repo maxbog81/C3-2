@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfMailSender"
-        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="WpfMailSender.MailSender"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:TabSwitcher="clr-namespace:TabSwitcher;assembly=TabSwitcher" x:Class="WpfMailSender.MailSender"
         mc:Ignorable="d"
         Title="MailSender" Height="500" Width="600" Icon="Images/mail.ico">
     <DockPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="590">
@@ -43,12 +43,13 @@
                                 <Image Source="Images\delete.ico"/>
                             </Button>
                         </ToolBar>
-                        <ToolBar x:Name="tbPlanner" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="230" Band="0" BandIndex="1" Margin="12,0,-12,0" >
+                        <!--<ToolBar x:Name="tbPlanner" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="230" Band="0" BandIndex="1" Margin="12,0,-12,0" >
                             <Label x:Name="lPlanner" Content="Перейти в планировщик" Height="25" Width="138" VerticalContentAlignment="Center"/>
                             <Button x:Name="btnClock" Width="25" Height="25" ToolTip="Перейти в планировщик" MinWidth="25" Click="BtnClock_Click">
                                 <Image Source="Images\clock.ico"/>
                             </Button>
-                        </ToolBar>
+                        </ToolBar>-->
+
                         <ToolBar x:Name="tbAddressee" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="230" Band="1" BandIndex="1" Margin="10,-1,-10,-3" >
                             <Label x:Name="lAddressee" Content="Список адресатов" Height="25" Width="112" VerticalContentAlignment="Center"/>
                             <Button x:Name="btnAddAddressee" Width="25" Height="25" ToolTip="Добавить" MinWidth="25">
@@ -63,28 +64,25 @@
                         </ToolBar>
                     </ToolBarTray>
                     <DataGrid x:Name="dgEmails" Margin="0,65,0,0"/>
+                    <TabSwitcher:TabSwitcherControl HorizontalAlignment="Left" Height="30" Margin="350,0,0,0" VerticalAlignment="Top" Width="230" btnNextClick="TabSwitcherControl_btnNextClick" IsHidebtnPrevious="True"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Планировщик">
+            <TabItem x:Name="TabPlanner" Header="Планировщик">
                 <Grid Background="#FFE5E5E5">
                     <Calendar x:Name="cldSchedulDateTimes" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionMode="MultipleRange"/>
-                    <xctk:TimePicker Name="tbTimePicker" HorizontalAlignment="Left" Margin="0,172,0,0" VerticalAlignment="Top" Width="179"/>
+                    <xctk:TimePicker x:Name="tbTimePicker" HorizontalAlignment="Left" Margin="0,172,0,0" VerticalAlignment="Top" Width="179"/>
                     <Button x:Name="btnSend"  HorizontalAlignment="Left" Margin="0,197,0,0" VerticalAlignment="Top" Width="179" RenderTransformOrigin="-1.12,-0.727" Click="btnSend_Click" Height="25">
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <Image Source="Images/clock.ico" Width="16" Height="16" />
-                                <TextBlock Margin="3,0,0,0" Text="Отправить запланированно" VerticalAlignment="Center" />
-                            </StackPanel>
-                        </Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/clock.ico" Width="16" Height="16" />
+                            <TextBlock Margin="3,0,0,0" Text="Отправить запланированно" VerticalAlignment="Center" />
+                        </StackPanel>
                     </Button>
 
                     <Button x:Name="btnSendAtOnce"  HorizontalAlignment="Left" Margin="0,228,0,0" VerticalAlignment="Top" Width="179" Height="25" Click="BtnSendAtOnce_Click">
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <Image Source="Images/letter.ico" Width="16" Height="16" />
-                                <TextBlock Margin="3,0,0,0" Text="Отправить сразу" VerticalAlignment="Center" />
-                            </StackPanel>
-                        </Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/letter.ico" Width="16" Height="16" />
+                            <TextBlock Margin="3,0,0,0" Text="Отправить сразу" VerticalAlignment="Center" />
+                        </StackPanel>
                     </Button>
                 </Grid>
             </TabItem>

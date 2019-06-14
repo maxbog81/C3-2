@@ -14,10 +14,10 @@ namespace WpfMailSender
         #region vars
         private string strLogin;         // email, c которого будет рассылаться почта
         private string strPassword;  // пароль к email, с которого будет рассылаться почта
-        private string strSmtp = "smtp.yandex.ru"; // smtp-server
-        private int iSmtpPort = 25;                // порт для smtp-server
-        private string strBody;                    // текст письма для отправки
-        private string strSubject= "Привет из C#";                 // тема письма для отправки
+        private string strSmtp = SmtpServer.Host;               // smtp-server
+        private int iSmtpPort = SmtpServer.Port;                // порт для smtp-server
+        private string strBody= SmtpServer.Body;                // текст письма для отправки
+        private string strSubject= SmtpServer.Subject;          // тема письма для отправки
         #endregion
         public EmailSendServiceClass(string sLogin, string sPassword)
         {
@@ -29,7 +29,7 @@ namespace WpfMailSender
             using (MailMessage mm = new MailMessage(strLogin, mail))
             {
                 mm.Subject = strSubject;
-                mm.Body = "Hello world!";
+                mm.Body = strBody;
                 mm.IsBodyHtml = false;
                 SmtpClient sc = new SmtpClient(strSmtp, iSmtpPort);
                 sc.EnableSsl = true;

@@ -39,10 +39,11 @@ namespace WpfMailSender
             Close();
         }
 
-        private void BtnClock_Click(object sender, RoutedEventArgs e)
-        {
-            tabControl.SelectedItem = tbPlanner;
-        }
+        //private void BtnClock_Click(object sender, RoutedEventArgs e)
+        //{
+        //    tabControl.SelectedItem = TabPlanner;
+
+        //}
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
@@ -84,14 +85,10 @@ namespace WpfMailSender
 
         }
 
-        //private void SendMailButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    SmtpServer.Subject = SubjectTextBox.Text;
-        //    SmtpServer.Body = BodyTextBox.Text;
+        private void TabSwitcherControl_btnNextClick(object sender, RoutedEventArgs e)
+        {
+            tabControl.SelectedIndex = 1;
+        }
 
-        //    EmailSendServiceClass SendMail = new EmailSendServiceClass();
-
-        //    SendMail.MailSend(passwordBox.Password);
-        //}
     }
 }

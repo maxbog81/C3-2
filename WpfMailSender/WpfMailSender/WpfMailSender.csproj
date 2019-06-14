@@ -35,6 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CodePasswordDLL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a11c7ea897539089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\CodePasswordDLL\v4.0_1.0.0.0__a11c7ea897539089\CodePasswordDLL.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -48,6 +52,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="TabSwitcher">
+      <HintPath>..\..\TabSwitcher\bin\Debug\TabSwitcher.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -66,7 +73,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Emails.dbml</DependentUpon>
     </Compile>
-    <Compile Include="PasswordClass.cs" />
     <Compile Include="SchedulerClass .cs" />
     <Compile Include="SendErrorWindow.xaml.cs">
       <DependentUpon>SendErrorWindow.xaml</DependentUpon>
