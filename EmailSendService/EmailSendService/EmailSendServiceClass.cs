@@ -1,28 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net;
-using System.Windows;
+using System.Net.Mail;
+using System.Windows.Forms;
 
-namespace WpfMailSender
+namespace EmailSendService
 {
-    class EmailSendServiceClass
+    public class EmailSendServiceClass
     {
         #region vars
         private string strLogin;         // email, c которого будет рассылаться почта
         private string strPassword;  // пароль к email, с которого будет рассылаться почта
-        private string strSmtp = SmtpServer.Host;               // smtp-server
-        private int iSmtpPort = SmtpServer.Port;                // порт для smtp-server
-        private string strBody= SmtpServer.Body;                // текст письма для отправки
-        private string strSubject= SmtpServer.Subject;          // тема письма для отправки
+        private string strSmtp;               // smtp-server
+        private int iSmtpPort;                // порт для smtp-server
+        private string strBody;                // текст письма для отправки
+        private string strSubject = "Привет из C#";          // тема письма для отправки
         #endregion
-        public EmailSendServiceClass(string sLogin, string sPassword)
+        public EmailSendServiceClass(string sLogin, string sPassword, string sSmtp, int iPort, string sBody)
         {
             strLogin = sLogin;
             strPassword = sPassword;
+            strSmtp = sSmtp;
+            iSmtpPort = iPort;
+            strBody = sBody;
         }
         private void SendMail(string mail, string name) // Отправка email конкретному адресату
         {
@@ -32,6 +35,7 @@ namespace WpfMailSender
                 mm.Body = strBody;
                 mm.IsBodyHtml = false;
                 SmtpClient sc = new SmtpClient(strSmtp, iSmtpPort);
+
                 sc.EnableSsl = true;
                 sc.DeliveryMethod = SmtpDeliveryMethod.Network;
                 sc.UseDefaultCredentials = false;
@@ -42,9 +46,7 @@ namespace WpfMailSender
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show("Невозможно отправить письмо " + ex.ToString());
-                    SendErrorWindow srw = new SendErrorWindow("Невозможно отправить письмо: " + ex.ToString());
-                    srw.ShowDialog();
+                    MessageBox.Show("Невозможно отправить письмо " + ex.ToString());
                 }
             }
         }//private void SendMail(string mail, string name)
@@ -56,7 +58,6 @@ namespace WpfMailSender
             }
         }
     }  //private void SendMail(string mail, string name)
-
 
 
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WpfMailSender
+namespace EmailSendService
 {
     /// <summary>
     /// Класс, который отвечает за работу с базой данных
@@ -21,5 +21,4 @@ namespace WpfMailSender
         }
 
     }
-
 }

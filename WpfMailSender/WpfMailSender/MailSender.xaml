@@ -89,11 +89,11 @@
             <TabItem Header="Редактор писем">
                 <Grid Background="#FFE5E5E5">
                     <RichTextBox x:Name="richTextBox">
-                        <FlowDocument>
+                        <!--<FlowDocument>
                             <Paragraph>
                                 <Run Text="RichTextBox"/>
                             </Paragraph>
-                        </FlowDocument>
+                        </FlowDocument>-->
                     </RichTextBox>
                 </Grid>
             </TabItem>

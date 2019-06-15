@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WpfMailSender
+namespace EmailSendService
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -36,7 +36,7 @@ namespace WpfMailSender
     #endregion
 		
 		public EmailsDataContext() : 
-				base(global::WpfMailSender.Properties.Settings.Default.MailsAndSendersConnectionString, mappingSource)
+				base(global::EmailSendService.Properties.Settings.Default.MailsAndSendersConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

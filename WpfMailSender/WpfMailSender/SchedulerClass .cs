@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
-
+using EmailSendService;
 
 namespace WpfMailSender
 {
@@ -55,7 +55,9 @@ namespace WpfMailSender
             {
                 emailSender.SendMails(emails);
                 timer.Stop();
-                MessageBox.Show("Письма отправлены.");
+                //MessageBox.Show("Письма отправлены.");
+                SendEndWindow sew = new SendEndWindow();
+                sew.ShowDialog();
             }
         }
     }

@@ -12,8 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Net;
-using System.Net.Mail;
+using EmailSendService;
 
 namespace WpfMailSender
 {
@@ -30,8 +29,9 @@ namespace WpfMailSender
             cbSenderSelect.SelectedValuePath = "Value";
             DBclass db = new DBclass();
             dgEmails.ItemsSource = db.Emails;
-
-
+            cbSmtpSelect.ItemsSource = VariablesClass.SmtpServers;
+            cbSmtpSelect.DisplayMemberPath = "Key";
+            cbSmtpSelect.SelectedValuePath = "Value";
         }
 
         private void MiClose_Click(object sender, RoutedEventArgs e)
@@ -60,7 +60,7 @@ namespace WpfMailSender
                 MessageBox.Show("Дата и время отправки писем не могут быть раньше, чем настоящее время");
                 return;
             }
-            EmailSendServiceClass emailSender = new EmailSendServiceClass(cbSenderSelect.Text, cbSenderSelect.SelectedValue.ToString());
+            EmailSendServiceClass emailSender = new EmailSendServiceClass(cbSenderSelect.Text, cbSenderSelect.SelectedValue.ToString(), cbSmtpSelect.Text, (int)cbSmtpSelect.SelectedValue, new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd).Text.Trim());
             sc.SendEmails(dtSendDateTime, emailSender, (IQueryable<Email>)dgEmails.ItemsSource);
 
         }
@@ -68,7 +68,17 @@ namespace WpfMailSender
         private void BtnSendAtOnce_Click(object sender, RoutedEventArgs e)
         {
             string strLogin = cbSenderSelect.Text;
-            string strPassword = cbSenderSelect.SelectedValue.ToString();
+            string strPassword =Convert.ToString(cbSenderSelect.SelectedValue);
+            string strSmtp = cbSmtpSelect.Text;
+            int iSmtpPort = Convert.ToInt32(cbSmtpSelect.SelectedValue);
+            string RTB = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd).Text.Trim();
+            if (string.IsNullOrEmpty(RTB))
+            {
+                MessageBox.Show("Письмо не заполнено");
+                tabControl.SelectedIndex = 2;
+                return;
+            }
+
             if (string.IsNullOrEmpty(strLogin))
             {
                 MessageBox.Show("Выберите отправителя");
@@ -80,9 +90,11 @@ namespace WpfMailSender
                 return;
             }
 
-            EmailSendServiceClass emailSender = new EmailSendServiceClass(strLogin, strPassword);
+            EmailSendServiceClass emailSender = new EmailSendServiceClass(strLogin, strPassword, strSmtp, iSmtpPort, RTB);
             emailSender.SendMails((IQueryable<Email>)dgEmails.ItemsSource);
 
+            SendEndWindow sew = new SendEndWindow();
+            sew.ShowDialog();
         }
 
         private void TabSwitcherControl_btnNextClick(object sender, RoutedEventArgs e)

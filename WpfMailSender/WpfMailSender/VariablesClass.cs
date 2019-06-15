@@ -16,8 +16,18 @@ namespace WpfMailSender
         }
         private static Dictionary<string, string> dicSenders = new Dictionary<string, string>()
         {
-            { "maks.20sm.79@mail.ru", CodePassword.getPassword("Ychg`Ocwg.234") },
+            { "maks.20sm.79@mail.ru", CodePassword.getPassword("89:1wgsd") },
             { "sok74@yandex.ru", CodePassword.getPassword("{3t1l2m6") }
+        };
+
+        public static Dictionary<string, int> SmtpServers
+        {
+            get { return dicSmtpServers; }
+        }
+        private static Dictionary<string, int> dicSmtpServers = new Dictionary<string, int>()
+        {
+            { "smtp.mail.ru", 2525 },
+            { "smtp.yandex.ru", 25 }
         };
     }
 

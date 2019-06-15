@@ -39,6 +39,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\CodePasswordDLL\v4.0_1.0.0.0__a11c7ea897539089\CodePasswordDLL.dll</HintPath>
     </Reference>
+    <Reference Include="EmailSendService">
+      <HintPath>..\..\EmailSendService\EmailSendService\bin\Release\EmailSendService.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -68,11 +71,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Emails.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Emails.dbml</DependentUpon>
-    </Compile>
     <Compile Include="SchedulerClass .cs" />
     <Compile Include="SendErrorWindow.xaml.cs">
       <DependentUpon>SendErrorWindow.xaml</DependentUpon>
@@ -80,7 +78,6 @@
     <Compile Include="SendEndWindow.xaml.cs">
       <DependentUpon>SendEndWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SmtpServer.cs" />
     <Compile Include="VariablesClass.cs" />
     <Page Include="MailSender.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -91,8 +88,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AppConfigClass .cs" />
-    <Compile Include="DBClass .cs" />
-    <Compile Include="EmailSendServiceClass.cs" />
     <Compile Include="MailSender.xaml.cs">
       <DependentUpon>MailSender.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -128,14 +123,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Emails.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>Emails.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Emails.dbml.layout">
-      <DependentUpon>Emails.dbml</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

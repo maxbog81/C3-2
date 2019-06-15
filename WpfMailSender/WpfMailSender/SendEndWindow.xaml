@@ -8,7 +8,7 @@
         Title="SendEndWindow" Height="175" Width="400" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
     <Grid>
         <!--<Label x:Name="lSendEnd" Content="Работа завершена" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" FontWeight="Bold" FontStyle="Italic"/>-->
-        <Label x:Name="lSendEnd" Content="Работа завершена" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center" 
+        <Label x:Name="lSendEnd" Content="Отправка завершена" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center" 
                 FontFamily="Arial" >
             <Label.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
@@ -20,7 +20,7 @@
             </Label.Foreground>
         </Label>
 
-        <Button x:Name="btnOK" Content="Лады" Width="110" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="148,135,142,10" Height="30" FontSize="16" FontWeight="Bold" Click="BtnOK_Click" />
+        <Button x:Name="btnOK" Content="OK" Width="110" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="148,135,142,10" Height="30" FontSize="16" FontWeight="Bold" Click="BtnOK_Click" />
 
     </Grid>
 </Window>
