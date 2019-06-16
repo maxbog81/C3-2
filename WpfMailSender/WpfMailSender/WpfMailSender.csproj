@@ -71,6 +71,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Components\ListControl.xaml.cs">
+      <DependentUpon>ListControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SchedulerClass .cs" />
     <Compile Include="SendErrorWindow.xaml.cs">
       <DependentUpon>SendErrorWindow.xaml</DependentUpon>
@@ -78,7 +81,13 @@
     <Compile Include="SendEndWindow.xaml.cs">
       <DependentUpon>SendEndWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Server.cs" />
+    <Compile Include="TestData.cs" />
     <Compile Include="VariablesClass.cs" />
+    <Page Include="Components\ListControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MailSender.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

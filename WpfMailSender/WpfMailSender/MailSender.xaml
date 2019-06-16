@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfMailSender"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:TabSwitcher="clr-namespace:TabSwitcher;assembly=TabSwitcher" x:Class="WpfMailSender.MailSender"
+        xmlns:components="clr-namespace:WpfMailSender.Components"
+        xmlns:data="clr-namespace:WpfMailSender"
         mc:Ignorable="d"
         Title="MailSender" Height="500" Width="600" Icon="Images/mail.ico">
     <DockPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="590">
@@ -18,8 +20,8 @@
                 <Grid Background="#FFE5E5E5">
                     <ToolBarTray Height="418" VerticalAlignment="Top">
                         <ToolBar x:Name="tbSender" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="30" Width="350" Margin="0,0,-12,0" >
-                            <Label x:Name="lSender" Content="Выбрать отправителя" Height="25" Width="120" VerticalContentAlignment="Center"/>
-                            <ComboBox x:Name="cbSenderSelect" Height="25" Margin="0" VerticalAlignment="Top" Width="130" ToolTip="Выбрать email отправителя"/>
+                            <Label x:Name="lSender" Content="Выбрать отправителя" Height="25" Width="111" VerticalContentAlignment="Center"/>
+                            <ComboBox x:Name="cbSenderSelect" Height="25" Margin="0" VerticalAlignment="Top" Width="140" ToolTip="Выбрать email отправителя"/>
                             <Button x:Name="btnAddSender" Height="25" Width="25" ToolTip="Добавить" Margin="0,0,0,1" MinWidth="20" >
                                 <Image Source="Images/add.ico" HorizontalAlignment="Right" />
                             </Button>
@@ -30,7 +32,11 @@
                                 <Image Source="Images/delete.ico" HorizontalAlignment="Right" />
                             </Button>
                         </ToolBar>
-                        <ToolBar x:Name="tbSmtp" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="350" Band="1" BandIndex="0" Margin="0,-1,-10,-29">
+
+                        <ToolBar x:Name="tbSmtp" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="350" Band="1" BandIndex="0" Margin="0,-1,-10,-29" >
+                            <components:ListControl x:Name="cbSmtp" PanelName="Выбрать smtp-сервер" MinWidth="250" Items="{x:Static data:TestData.Servers}" DisplayMemberPath="Name" Width="326" />
+                        </ToolBar>
+                        <!--<ToolBar x:Name="tbSmtp" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="350" Band="1" BandIndex="0" Margin="0,-1,-10,-29">
                             <Label x:Name="lSmtp" Content="Выбрать smtp-сервер" Height="25" Width="120" VerticalContentAlignment="Center"/>
                             <ComboBox x:Name="cbSmtpSelect" Height="25" Margin="0" VerticalAlignment="Top" Width="130" SelectedIndex="0" ToolTip="Выбрать smtp-сервер"/>
                             <Button x:Name="btnAddSmtp" Width="25" Height="25" ToolTip="Добавить" MinWidth="25">
@@ -42,13 +48,14 @@
                             <Button x:Name="btnDeleteSmtp" Width="25" Height="25" ToolTip="Удалить" MinWidth="25">
                                 <Image Source="Images\delete.ico"/>
                             </Button>
-                        </ToolBar>
+                        </ToolBar>-->
                         <!--<ToolBar x:Name="tbPlanner" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="230" Band="0" BandIndex="1" Margin="12,0,-12,0" >
                             <Label x:Name="lPlanner" Content="Перейти в планировщик" Height="25" Width="138" VerticalContentAlignment="Center"/>
                             <Button x:Name="btnClock" Width="25" Height="25" ToolTip="Перейти в планировщик" MinWidth="25" Click="BtnClock_Click">
                                 <Image Source="Images\clock.ico"/>
                             </Button>
                         </ToolBar>-->
+                        
 
                         <ToolBar x:Name="tbAddressee" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="230" Band="1" BandIndex="1" Margin="10,-1,-10,-3" >
                             <Label x:Name="lAddressee" Content="Список адресатов" Height="25" Width="112" VerticalContentAlignment="Center"/>
@@ -65,6 +72,7 @@
                     </ToolBarTray>
                     <DataGrid x:Name="dgEmails" Margin="0,65,0,0"/>
                     <TabSwitcher:TabSwitcherControl HorizontalAlignment="Left" Height="30" Margin="350,0,0,0" VerticalAlignment="Top" Width="230" btnNextClick="TabSwitcherControl_btnNextClick" IsHidebtnPrevious="True"/>
+                    
                 </Grid>
             </TabItem>
             <TabItem x:Name="TabPlanner" Header="Планировщик">
