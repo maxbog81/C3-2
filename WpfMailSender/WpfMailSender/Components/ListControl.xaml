@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="WpfMailSender.Components.ListControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfMailSender.Components"
+             mc:Ignorable="d"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}"
+             d:DesignHeight="25" d:DesignWidth="300">
+
+    <DockPanel>
+        <!--<Label Content="Панель"/>-->
+        <!--<Label Content="{Binding PanelName}"/>-->
+        <Label Content="{Binding PanelName, FallbackValue=[Panel name]}" VerticalContentAlignment="Center"/>
+        <UniformGrid DockPanel.Dock="Right" Rows="1">
+            <Button Command="{Binding AddCommand}" MinWidth="20" Height="25" Width="25">
+                <Image Source="/Images/add.ico" HorizontalAlignment="Right" />
+            </Button>
+            <Button Command="{Binding EditCommand}" CommandParameter="{Binding SelectedItem}" MinWidth="20" Height="25" Width="25">
+                <Image Source="/Images/edit.ico" HorizontalAlignment="Right" />
+            </Button>
+            <Button Command="{Binding DeleteCommand}" CommandParameter="{Binding SelectedItem}" MinWidth="20" Height="25" Width="25">
+                <Image Source="/Images/delete.ico" HorizontalAlignment="Right" />
+            </Button>
+        </UniformGrid>
+        <ComboBox ItemsSource="{Binding Items}" 
+                  SelectedItem="{Binding SelectedItem}" 
+                  DisplayMemberPath="{Binding DisplayMemberPath}"
+                  ItemTemplate="{Binding ItemTemplate}"/>
+    </DockPanel>
+
+</UserControl>
